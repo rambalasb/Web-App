@@ -1,48 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mattamy Home</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script> -->
+
+  <title>Login/Sign Up |Mattamy Homes</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <style>
+    .login-container .row {
+      height: calc(100vh - 72px);
+      color: #002D72;
+    }
+
+    .panel {
+      margin: 0 5rem;
+    }
+
+    .bg-div {
+      background: url("https://wallpapercave.com/wp/wp1842345.jpg");
+      background-size: cover;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 2.5rem;
+    }
+
+    .login-message {
+      background-color: #ffffffb2;
+    }
+
+    footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      color: white;
+      background: #2A2D31;
+      padding: 1.5rem 3rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .accountButton {
+      width: 60%;
+      padding: 0.5rem 2rem;
+      border: 1px solid #002D72;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 0.5rem;
+      background-repeat: no-repeat;
+      color: #002D72;
+      background-size: contain;
+      background-color: transparent;
+    }
+
+    .accountButton:before {
+      content: "CONTINUE WITH ";
+    }
+
+    .heading,
+    .intro {
+      display: none;
+    }
+
+    .error-message {
+      width: 80%;
+      margin-left: 10%;
+      color: black;
+      background-color: #CE00370D;
+      border: 1px solid #CE0037;
+      border-left: 3px solid #CE0037;
+      text-align: left;
+      position: relative;
+    }
+  </style>
+
+  <style>
+    #FacebookExchange {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAaVBMVEU7W5z///85Wps3WJsiRo8xU5fw8vYyUpY0VZiAj70pS5OBkb0vUpb7+fwsTpTR1ud6irllerBPaqX09fnx8vfs7fSQoMZxg7VsgLNGY6FCX58ZP4v++/7r7vTZ3OupstGIlsFWcalDYaCK3qwDAAAAnklEQVQ4y+XQyw7CIBAFUBgc5VUoWGtb3/7/RyoYkyZAiSsXvdt7kstA/hRg/B0GpZ6byQ3Dw0NBaH+lMYRle3T0kwayACRdBrr/gnN+QtpQWv8cR4DswiUAjozlz4RdF8AmlnmwjaDQImoZwQkRedoToUS7D+ColGoTwQidx8oEQDMHN1MBva5MOL70SCHuE1TOhOpHrRt0FWAOP4IX8PsG2qEOR30AAAAASUVORK5CYII=);
+    }
+
+    #AppleExchange,
+    #AppleManagedExchange {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48dGl0bGU+YXNzZXRzPC90aXRsZT48cGF0aCBkPSJNMTUuNDU0LDEwLjYzOEE0LjU0Nyw0LjU0NywwLDAsMSwxNy42Miw2LjgyM2E0LjY1Niw0LjY1NiwwLDAsMC0zLjY2Ni0xLjk4MmMtMS41NDMtLjE2Mi0zLjAzOC45MjMtMy44MjUuOTIzcy0yLjAxMS0uOTA3LTMuMzE0LS44ODNBNC44ODIsNC44ODIsMCwwLDAsMi43MDYsNy4zODdjLTEuNzc2LDMuMDc2LS40NTEsNy42LDEuMjUxLDEwLjA4M0M0LjgwOSwxOC42ODcsNS44LDIwLjA0Nyw3LjEwNiwyMGMxLjI3My0uMDUzLDEuNzUtLjgxMywzLjI4OC0uODEzLDEuNTIzLDAsMS45NjkuODEzLDMuMy43ODIsMS4zNjgtLjAyMiwyLjIyOS0xLjIyMywzLjA1LTIuNDUyYTEwLjA3MSwxMC4wNzEsMCwwLDAsMS4zOTUtMi44NDFBNC4zOTMsNC4zOTMsMCwwLDEsMTUuNDU0LDEwLjYzOFoiLz48cGF0aCBkPSJNMTIuOTQyLDMuMjA3QTQuNDc1LDQuNDc1LDAsMCwwLDEzLjk2NiwwLDQuNTUyLDQuNTUyLDAsMCwwLDExLjAyLDEuNTI1LDQuMjYxLDQuMjYxLDAsMCwwLDkuOTY5LDQuNjE3LDMuNzcsMy43NywwLDAsMCwxMi45NDIsMy4yMDdaIi8+PC9zdmc+);
+    }
+
+    #TwitterExchange {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAdVBMVEVgqd3///9Ypdtdp9xaptxSotpQodlNn9lWo9pUo9rX6Pa+2vGTw+iLvuZlqt79/P7K4PO62O+y0+6hyutysuD2+fzi7vne6/fT5PTE3fKs0O2lzeuZx+l7tuJqrd71+Pzz9vzn8PnQ4/SCueSAueNsrt9InNh7sQwBAAAAwklEQVQ4y92PRw6EMAwAXeIkdBbY3uv/n7gSAoLDD5hbPCPZgZVihEgYgNSUpmfS7bfbtHS2nReyL2Qoc+yp8ZRAwCEWjgGAPQ7sssKoAGsWBrrgyMZCwD77Uel+59E3Tt14xZ7qlY7BRf1CDgeMKMw8sBXGlKxWtLGvHCgkQ80m0YHpjjq4sQ74pn1mISLJVSAMiwJO98l/TWSNF1eGKzqKfZ7Vj0mnHHwodpP+WIYlZP373DTtVWxYr2FD3pOBdfIHhOAHYHQI9VgAAAAASUVORK5CYII=);
+    }
+
+    #MicrosoftAccountExchange {
+      background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAJQAlAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCAAhACEDAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD+ur9uf9vi3/Yrv/hrZT/C24+I3/CxLTxXdLLB4wh8Lf2T/wAIvP4fhKMkvh3Xftv23+3QwZWtvs/2UgibzgY/xbxZ8Xo+F9bI6UuH553/AG1TzGopQzNZf9X+oTwcLNSweK9r7X62ndOHJybS5lb+rvo1/Rfq/SIw3F+Jp8a0uEv9VK+R0XCpkFTO/r/9tUs0qKUZU82y36v9W/s2zTVb2vtk04clpfCum/8ABc6x1HU9M04fszX8P9o6npuned/wtqzk8n+0L63svOKDwAhcRef5hQMu/bs3LuyPybD/AEr6dbEYeh/qJWj7fEUKHN/rHCXL7etClzcv9ke9y8/NbS9rXW6/pfF/s1cThMJi8V/xGPDVPquExWK9n/qLiIc/1bD1cRyc3+tEuXn9ny83K+W97O1j6H+Jf/BVK1+HfxF8eeAG+CF1qzeCPGPiTwk2qr8QbeyXUm8Pavd6Ub9bNvCNybVbs2vni3NzOYQ4jM0hUsfyjjn9oBhuC+NOLeEJeFlbMJcL8SZ3w88euM4YVY15NmWJy54tYX/VrEfV1iHhvbKh7es6SmoOpNrmf+Q+J4vWHxFegsunU9jVnSc1iYxUuSVuZJ0Xa9tru3c9q/ZP/bxg/ah+IOs+A4vhhP4KbSPCN54r/tSXxdDr63AtNX0fSvsItI/D+kmMyHVhP9oNw4XyDGYT5gdf1D6PP0t6Pj1xjmfCdLgSpww8t4cxfEDx8+JY5wqqwuY5Vl/1T6ssky103P8AtNVVX9tNRVBwdN+0Uo9+T8QrNsTPD/U5YdwoutzOuqt7ThDl5VThb4r35ulra6foPX9kn0h/O3/wXUhll139mnyopZNuk/FjPlxSyYzffD7GfLRsZwcZxntX8X/SxjOWL4G5YTlbD8R35Yyla9bJrX5U7bPe34O3+sH7NOrSp5Z4v+0qU4Xx3A9uepCF/wDZuKNueUb20vbuj8JvDNrdDxN4Z/0W6/5Gbw3/AMutz/0HdOOT+64Hv0Hev5MwNOr9fy/91V/5GGB/5dT/AOguj/dP9MM3xOHeUZuvb0NcozX/AJf0f+hdiv8Ap4fon+0vb3D/ALRfx6KwTsD8Y/iSQwgmKkHxbqpBBEZBB7EcHqCRX8jeOtCtLxq8WpKlUafiTxvZ8krNf6y5lqtNU909mrNaNH/IVmCf9oY7SX+91/sy/nfkfav/AASbhmj/AGhfGZkilQf8Kh1kZeKRASfF/g44BdVBPHTOa/qT9nfSqQ8YuKHOnOKfhvmyTlFpX/1j4V0u1a+nfo+zt73CF/7Tr6Nf7FLdNf8AL6l3P6Fa/wBmD9HPws/4LH/G34v/AAi1n9n+H4XfErxn8P4te0z4lya1H4T1y60ddUk0688EJYPfC2YfaGs1vbtbcvnyhcTBfvmv7l+h5wJwZxlg+P6nFfC2Q8Rzy/E8MwwMs5yzDZg8JHFUc7liFh3iISdJVnQouqo253Tg38KP8y/2g/if4h+HeYeFlPgbjTibhOnm2D4xnmUOH85x2VRx08FiOHY4SWKWDrUlXlh44rEKi6nM6aq1FC3PK/42+HP2y/2sLjxDoFvP+0X8X5oLjXdFgmik8aam8csM2qWkUsbqzkMjxuyOp4ZSVPBNf2JmHgl4QU8DjKkPDPgeM6eExVSEo8O5fGUZww9WcZJqldNSimmtU0mtT/PjJvpJePlfNsto1fGHxGnTq47CU6kJcXZzKMoTr04yjKMsVKMouLaakmmtGmm0/wBxPip8YfippfxO+Imm6d8QvFtjp+n+OPFNlZWdtrE8Vva2ltrV5Db20EY4jhgiRI4kHCooHav/AD8PHj6S/j/kHjd4vZHk3jF4h5blGT+JfHGW5Zl+D4ozLD4TA5fguJcyw+DweFoUq0adHDYXD06dChShFRhSpxjra5/2vcB+Gfh7mPBHCGOxvBfDWKxmL4ayXEYrE18qw1SviMRWy/D1K1etUlHmnVq1JSnUm9ZTk29We7/scfEXx54u+Jeu6d4o8X+INfsIPBd9eQ2eq6jLd28d0mtaHClwkb8LMkU00auOQkrj+Kv6x/ZueNfi34keNfFeS8eeI3GHFuU4TwyzfM8Pluf55jczwdHMKfEvCeGpY2nQxNScYYmlh8ViqMKsbSVPEVYu6lp+W/SL4I4Q4a4KyvHZBw1kuTYyrxLhsLVxOW4Cjha9TDzy3M6sqE6lNKUqUqlKnNwejlCD3SP0qr/bU/i4/J3/AIKX/sR/F/8Aa71P4PXnwu1LwLYReA7Hxzba0PGOtatpLyyeI7nwrLYf2eNM8P62J1RdFu/tRmNsY2aARiUO5j/rH6NPjbwh4R4XjCjxRhs9xE8+r5FUwX9jYLCYuMY5bSzWGI+sPE5hgnTbeNpeyUFUUkqnNycseb+Efpl/Rr4/8fsZ4fYjgnG8MYSHC+G4mo5iuIcxx+AlOWb1skqYV4RYLKczVWMY5dX9s6jouDdPlU+aTj+Z2i/8EZv2sdP1nR9Qn8RfBQwWGraXfTCPxh4paQw2d/bXUojU+A1DSGOJggZlBbALKDkf0vjPpleFGIwmKoQy7jZTrYbEUYOWT5WoqVWjUpxcrZ63yqUleybS1s9j+Ncr/Z3eOuDzHA4urnHhs6WGxeGr1FDiDPJTcKVaFSSinwvFOVouyckm9Lrdfqv4/wD2O/ip4n8d+NPEunaj4Lj0/wAQeKtf1qxS71fVIrpLTU9Uuby3W4jj0KaOOdYplEqJLKquGCyOAGP/ABw+Lv7Nzx+468VPEjjXJs48MqWU8W8dcVcSZZTx/EWe0MdTwGdZ3jcxwkMZRo8KYmjSxMaGIgq9OliK9OFXmjGrUilJ/wDUzwh9IvgTIuFeG8lxmC4lni8pyPK8uxUsPl2BqUJYjB4Kjh6roznmlOcqTnTfJKVOEpRs3GN7L1r9mj9nPx58IvHGreI/FF54auLC98L3Wjwpo2o313ci7m1TS7xGkjutKsUWERWUoZ1lZg5jAjIZmX+iPoQfQw8Wfo6+KPEPGXHmY8EYzKc14EzHhvDU+Gs4zXMMbHMMVnvD2ZU51qOOyHK6UcKsPleJjOpGvOoqsqUVScZSnD4Dxs8ZOFPELhbAZNkeGzuji8NnlDMqksyweFw9B0KWBx+GlGE6GOxU3VdTE02oumo8qm+dNKMvuKv9Tj+XQoAKACgAoAKAP//Z)
+    }
+
+    #GoogleExchange {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAMAAACP+FljAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABOFBMVEX////62NXyi4Pual/rUEPqSz3tXlLyi4L5y8f86OfvcmjqQzXub2T85uT61dLrU0fvdWv86+nrT0LtX1PxgnnwgHfsXVHuaF398vHvdWnsWEv4xsL4wr7wenD+7sP0jRfqRjPsVkn85eT81mf7vAX3pQ7sUy/3ubT7xzH5uBj+/PyGsfjC1/v7vxP7yz9ChfSSuPiMtPj7xzDzwR78/fxel/VZlPWcv/n51GTVuBNOqki03r+vy/q60vv3672vtCI6qFA0qFNIsGTj8+jw9f5clvVDhfRrv4JLsWbC5cvY7t5gnt6Gsffp9exBrV5StGx4xY17xo9cuXU1pls9j8FNjPTo8P3S69lGr2JLoaPO3/zn9Opnvn5UtW7X7t3V7duCyZVeundCrl87q1lOs2l6xo+84sb9/v2qdWS0AAAAAWJLR0QAiAUdSAAAAAd0SU1FB+EIGQ4HDEDExrUAAADWSURBVDjLY2AYBZiAkYmZhZWNnQOHNCcXNxTw8GKT5+PnhgMBLPKCQiAZYRFRMW5ucQksCiSB0lLSIJaMLDZ5OXkFbkUlPB5QVlFVU8fnQw0VFU0tEEMbCnTQFOiqqOiBGfpQYEBIgSGaAiMVFWMTEMMUCMyACszRFFioWFpZwzg2QAW2aArs7B0cnZwhbBdXfX03F3RvuDs6Onp4glhe3kADfDD86esHVOHoHxAY5Bgcoh8ahhkS4RGOcBAZhS2somNg8rFxOIIzPiExKTklNS2dYaQBADviJWzWK7IJAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA4LTI1VDE0OjA3OjEyLTA0OjAwBQDEvwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wOC0yNVQxNDowNzoxMi0wNDowMHRdfAMAAAAASUVORK5CYII=)
+    }
+  </style>
 </head>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-    * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        -o-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    html {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .login-container {
-        padding: 10%;
-        text-align: center;
-    }
-</style>
 
 <body>
+  <div class="container-fluid login-container" role="presentation">
     <div class="row">
-        <div class="login-container col-6">
-            <h3>Mattamy Home</h3>
-            <h5>Welcome</h5>
-            <div id="api"></div>
+      <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center">
+        <div class="panel panel-default">
+          <img class="mx-auto d-block mb-3"
+            src="https://mattamy.secure.footprint.net/-/media/feature/content/identity/mattamylogo.svg?as=0&dmc=0&iar=0&thn=0&udi=0"
+            alt="Mattamy Homes">
+          <div class="panel-body text-center">
+            <h2>Login to your account</h2>
+            <span>Enter your email through your social account</span>
+            <!-- <div class="my-2 py-2 px-5 error-message">
+              <svg style="position: absolute; right: 1rem; fill: #000" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 384 512"><style>svg{fill:#000000}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+              <svg style="position: absolute; left: 1rem" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"><style>svg{fill:#ce0037}</style><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg><b>Oops! We couldn't sign you in right now.</b> It seems like there was an issue with validating your
+              email. Please double-check your email and try again or view our <u>Account Support</u> page for additional
+              help.
+            </div> -->
+            <div id="api" class="my-4" role="main">
+            </div>
+            <span>Having trouble logging in. Please view our <u><a style="color: inherit;" href="https://www.google.com/" target="_blank">Support Page</a></u></span><br>
+            <span>Please note, this is currently only available for the Carrington Community for select home buyers,
+              check back soon for updates.</span><br>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-div">
+        <span class="login-message">A portal build for you and your home</span>
+      </div>
     </div>
-
+  </div>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0">&copy; 2023 Mattamy Homes. Prices are subject to change. E & OE.</span>
+    </div>
+    <div class="nav col-md-6 justify-content-end ">
+      <a href="/" class="mb-3 me-2 mb-md-0 lh-1">
+        Visit Us At MattamyHomes.Com | 
+      </a>
+      <a href="/" class="mb-3 me-2 mb-md-0 lh-1">
+        Need help? view account support
+      </a>
+    </div>
+  </footer>
 </body>
 
 </html>

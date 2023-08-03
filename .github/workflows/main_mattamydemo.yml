@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP app to Azure Web App - mattamydemo
+name: Deploy HTML file to Azure Web App - mattamydemo
 
 on:
   push:
@@ -10,41 +10,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '7.x' # replace with your .NET version
-
-      - name: Restore NuGet packages
-        run: dotnet restore
-
-      - name: Publish to folder
-        run: dotnet publish --output published/ --configuration Release
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: ASP-app
-          path: './published/**'
-
   deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: ASP-app
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -53,4 +24,4 @@ jobs:
           app-name: 'mattamydemo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_32F79AF3488244319B13F9D1154AAB83 }}
-          package: .
+          package: '.'

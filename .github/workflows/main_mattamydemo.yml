@@ -24,4 +24,4 @@ jobs:
           app-name: 'mattamydemo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_32F79AF3488244319B13F9D1154AAB83 }}
-          package: '.'
+          package: './src'

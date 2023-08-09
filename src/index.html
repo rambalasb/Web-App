@@ -3,7 +3,6 @@
 
 <head>
   <title>Login/Sign Up | Mattamy Customer Portal</title>
-  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -196,36 +195,6 @@
       </a>
     </div>
   </footer>
-  <script>
-    const msalConfig = {
-        auth: {
-            clientId: "68567589-9b34-4975-9bb9-964d0dd8e2c8", // This is your client ID
-            authority: "https://login.microsoftonline.com/tfp/Mattamydemo.onmicrosoft.com/B2C_1_sign_up_sign_in",
-            redirectUri: "https://Mattamydemo.b2clogin.com/Mattamydemo.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_sign_up_sign_in&client_id=68567589-9b34-4975-9bb9-964d0dd8e2c8&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fmattamydemo.b2clogin.com&scope=openid&response_type=id_token&prompt=login",
-        },
-        cache: {
-            cacheLocation: "localStorage", 
-            storeAuthStateInCookie: true, 
-        }
-    };
-
-    const myMSALObj = new Msal.UserAgentApplication(msalConfig);
-
-    function signIn() {
-        myMSALObj.loginPopup().then(response => {
-            // Login successful
-            // Now you can use the acquired token to call your API
-        }).catch(err => {
-            console.log(err);
-        });
-    }
-
-    // Call this function when you want to log the user out
-    function signOut() {
-        myMSALObj.logout();
-    }
-</script>
-
 </body>
 
 </html>

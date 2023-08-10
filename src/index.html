@@ -7,9 +7,6 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://db.onlinewebfonts.com/c/a5b0e20f1b3c4884638d19a0b5d43074?family=Graphie-Regular" rel="stylesheet">
-  <link href="https://db.onlinewebfonts.com/c/9103ddbaff2852b92957c22da378058f?family=Trade+Gothic+LT+W04+Bd+CnNo.20"
-    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
@@ -44,7 +41,7 @@
       background: #002D72;
       color: #fff;
       padding: 72px 80px;
-      margin-top: 3%;
+      margin-top: 8%;
       margin-bottom: 15%;
     }
 
@@ -84,7 +81,7 @@
       height: 98px;
       color: white;
       background: #2A2D31;
-      padding: 0 160px;
+      padding: 0 5%;
       bottom: 0;
       position: fixed;
     }
@@ -109,7 +106,7 @@
       color: #002D72;
       background-color: #fff;
       background-size: 24px;
-      background-position: 2% center;
+      background-position: 3% center;
       border: none;
     }
 
@@ -123,14 +120,63 @@
     }
 
     .error-message {
-      width: 80%;
-      margin-left: 10%;
-      color: black;
-      background-color: #CE00370D;
-      border: 1px solid #CE0037;
-      border-left: 3px solid #CE0037;
+      position: absolute;
+      padding: 16px 32px 16px 32px;
+      border-radius: 8px;
+      border: 2px solid #CE0037;
       text-align: left;
-      position: relative;
+      margin-top: 5%;
+      color: #002D72;
+      background-color: #fff7f7;
+      font-family: "Graphie-Regular";
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+
+    .error-message a {
+      color: #002D72;
+      text-decoration: underline;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .login-panel {
+        margin-top: 14%;
+        margin-bottom: 20%;
+      }
+
+      .error-message {
+        margin-top: 10%;
+      }
+    }
+
+
+    @media only screen and (max-width: 600px) {
+      body {
+        background-size: contain;
+      }
+
+      .login-panel {
+        border-radius: unset;
+        padding: 64px 32px;
+        margin-top: 75%;
+        margin-bottom: 45%;
+      }
+
+      footer {
+        height: 192px;
+        padding: 32px 40px;
+      }
+
+      .error-message {
+        margin-top: 45%;
+        right: 0;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
     }
   </style>
 
@@ -160,27 +206,31 @@
 
 <body>
 
-  <!-- <div class="my-2 py-2 px-5 error-message">
-              <svg style="position: absolute; right: 1rem; fill: #000" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 384 512"><style>svg{fill:#000000}</style><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-              <svg style="position: absolute; left: 1rem" xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"><style>svg{fill:#ce0037}</style><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg><b>Oops! We couldn't sign you in right now.</b> It seems like there was an issue with validating your
-              email. Please double-check your email and try again or view our <u>Account Support</u> page for additional
-              help.
-            </div> -->
-  <div class="container-fluid p-0">
+  <div class="row justify-content-md-center" style="background-color: #fff;">
+    <div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 col-xs-12 px-5 error-message">
+      <img src="./svgs/error.svg" style="position: absolute; width: 24px; left: 1rem;" alt="Error">
+      <img src="./svgs/close.svg" style="position: absolute; width: 24px; right: 1rem;" alt="Close">
+      <b>Oops! We couldn't sign you in right now.</b> Please double-check your email and try again or view our <a
+        href="https://mattamyhomes.com/contact" target="_blank">
+        Account Support</a> page for additional help.
+    </div>
+  </div>
+  <div class="container-fluid">
     <img class="mattamy-logo" src="https://mattamydemo.azurewebsites.net/images/MattamyLogo.png" alt="Mattamy Homes">
-    <div class="row w-100 justify-content-md-center">
-      <div class="col-lg-5 login-panel d-flex flex-column justify-content-center align-items-center">
+    <div class="row justify-content-md-center">
+      <div
+        class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-xs-12 login-panel d-flex flex-column justify-content-center align-items-center">
         <div class="panel panel-default">
           <div class="panel-body text-center">
             <span class="login-panel-heading">My Mattamy Portal Login</span><br>
             <span class="login-panel-subheading">To continue, select a social login using the same email that you were
               notified by Mattamy. </span>
             <div id="api" class="my-3" role="main">
-              <!-- <button class="accountButton" id="GoogleExchange">GOOGLE</button>
+              <button class="accountButton" id="GoogleExchange">GOOGLE</button>
               <button class="accountButton" id="FacebookExchange">GOOGLE</button>
               <button class="accountButton" id="AppleExchange">GOOGLE</button>
               <button class="accountButton" id="TwitterExchange">GOOGLE</button>
-              <button class="accountButton" id="MicrosoftAccountExchange">GOOGLE</button> -->
+              <button class="accountButton" id="MicrosoftAccountExchange">GOOGLE</button>
             </div>
             <span class="login-panel-footer">Please note, individuals from the Carrington Community who have received
               the email notification from their Mattamy representative will be able to access this portal at this time.
@@ -190,15 +240,15 @@
       </div>
     </div>
   </div>
-  <footer class="d-flex w-100 align-items-center">
-    <div class="col-lg-6 d-flex align-items-center">
-      <span class="mb-3 mb-md-0">&copy; 2023 Mattamy Homes. Prices are subject to change. E & OE.</span>
+  <footer class="row m-0 w-100 d-flex align-items-center">
+    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+      <span>&copy; 2023 Mattamy Homes. Prices are subject to change. E & OE.</span>
     </div>
-    <div class="nav col-md-6 justify-content-end ">
-      <a href="https://mattamyhomes.com/" target="_blank" class="mb-3 me-2 mb-md-0 lh-1">
+    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+      <a href="https://mattamyhomes.com/" target="_blank">
         Visit Us At MattamyHomes.Com |
       </a>
-      <a href="https://mattamyhomes.com/contact" target="_blank" class="mb-3 me-2 mb-md-0 lh-1">
+      <a href="https://mattamyhomes.com/contact" target="_blank">
         Need help? view account support
       </a>
     </div>

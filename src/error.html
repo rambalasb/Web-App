@@ -180,7 +180,11 @@
       }
     }
   </style>
-
+  <style>
+    .hidden-details {
+        display: none;
+    }
+</style>
   <style>
     #FacebookExchange {
       background-image: url(https://mattamydemo.azurewebsites.net/images/Facebook.png);
@@ -203,31 +207,6 @@
       background-image: url(https://mattamydemo.azurewebsites.net/images/Google.png);
     }
   </style>
-  <style>
-    .error-container {
-        display: none;
-        border: 1px solid #f00;
-        background-color: #fdd;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-    }
-    .error-container b {
-        color: #d00;
-        font-size: 1.2em;
-    }
-    .error-container p {
-        margin: 5px 0;
-        color: #333;
-    }
-    .error-container a {
-        color: #007BFF;
-        text-decoration: none;
-    }
-    .error-container a:hover {
-        text-decoration: underline;
-    }
-</style>
 </head>
 
 <body>
@@ -240,13 +219,14 @@
         Account Support</a> page for additional help.
     </div>
   </div>
-  <div class="error-container">
-    <b>Sorry, but we're having trouble signing you in.</b>
-    <p>We track these errors automatically, but if the problem persists feel free to <a href="https://mattamyhomes.com/contact" target="_blank">contact us</a>. In the meantime, please try again.</p>
-    <!-- Commented out the technical details to hide them from users but retain for debugging purposes.
-    <p>Correlation ID: 64a4bba6-1c87-429e-a53d-8e3dc98533f6</p>
-    <p>Timestamp: 2023-08-10 20:34:43Z</p>
-    <p>AADB2C90018: The client id '68567589-9b34-4975-9bb9-964d0dd8e2c8xx' specified in the request is not registered in tenant 'Mattamydemo.onmicrosoft.com'.</p>
+<!-- Hidden details for developers. This data will be available in the page's source but not visible to end-users. -->
+<div class="hidden-details">
+    <!--
+    Sorry, but we're having trouble signing you in.<br>
+    We track these errors automatically, but if the problem persists feel free to <a href="#">contact us</a>. In the meantime, please try again.
+    Correlation ID: 99d20f01-a911-4d29-9927-b0a0a854f535
+    Timestamp: 2023-08-10 21:12:46Z
+    AADB2C90018: The client id '68567589-9b34-4975-9bb9-964d0dd8e2c8xx' specified in the request is not registered in tenant 'Mattamydemo.onmicrosoft.com'.
     -->
 </div>
   <div class="container-fluid">

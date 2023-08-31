@@ -28,7 +28,7 @@
     }
 
     body {
-      background: url("https://mattamydemo.azurewebsites.net/images/LoginBackground.png");
+      background-image: url("https://mattamydemo.azurewebsites.net/images/LoginBackground.png");
     }
 
     .mattamy-logo {
@@ -43,7 +43,7 @@
       color: #fff;
       padding: 72px 80px;
       margin-top: 8%;
-      margin-bottom: 15%;
+      margin-bottom: 10%;
     }
 
     .login-panel-heading {
@@ -121,14 +121,14 @@
     }
 
     .error-message {
-      position: absolute;
-      padding: 16px 32px 16px 32px;
+      position: relative;
+      padding: 16px 54px 16px 64px;
       border-radius: 8px;
       border: 2px solid #CE0037;
       text-align: left;
-      margin-top: 5%;
-      color: #002D72;
-      background-color: #fff7f7;
+      margin: 5% 0;
+      color: rgba(42, 45, 49, 1);
+      background-color: rgba(253, 242, 245, 1);
       font-family: "Graphie-Regular";
       font-size: 16px;
       font-weight: 400;
@@ -138,7 +138,7 @@
     }
 
     .error-message a {
-      color: #002D72;
+      color: rgba(42, 45, 49, 1);
       text-decoration: underline;
     }
 
@@ -210,15 +210,7 @@
 </head>
 
 <body>
-  <div class="row justify-content-md-center" style="background-color: #fff;">
-    <div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 col-xs-12 px-5 error-message">
-      <img src="https://mattamydemo.azurewebsites.net/svgs/error.svg" style="position: absolute; width: 24px; left: 1rem;" alt="Error">
-      <img src="https://mattamydemo.azurewebsites.net/svgs/close.svg" style="position: absolute; width: 24px; right: 1rem;" alt="Close">
-      <b>Oops! We couldn't sign you in right now.</b> Please double-check your email and try again or view our <a
-        href="https://mattamyhomes.com/contact" target="_blank">
-        Account Support</a> page for additional help.
-    </div>
-  </div>
+  
   <div class="container-fluid">
     <img class="mattamy-logo" src="https://mattamydemo.azurewebsites.net/images/MattamyLogo.png" alt="Mattamy Homes">
     <div class="row justify-content-md-center">
@@ -229,8 +221,13 @@
             <span class="login-panel-heading">My Mattamy Portal Login</span><br>
             <span class="login-panel-subheading">To continue, select a social login using the same email that you were
               notified by Mattamy. </span>
-            <div id="api" data-name="Unified" class="my-3" role="main">
-            </div>
+              <div class="error-message">
+                <img src="https://mattamydemo.azurewebsites.net/svgs/error.svg" style="position: absolute; width: 24px; left: 16px;" alt="Error">
+                  <img src="https://mattamydemo.azurewebsites.net/svgs/close.svg" style="position: absolute; width: 24px; right: 16px;" alt="Close">
+                  <b>Oops! We couldn't sign you in right now.</b> Please double-check your email and try again or view our <a
+                    href="https://mattamyhomes.com/contact" target="_blank">
+                    Account Support</a> page for additional help.
+              </div>
             <span class="login-panel-footer">Please note, individuals from the Carrington Community who have received
               the email notification from their Mattamy representative will be able to access this portal at this time.
             </span><br>

@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-   
+
   <style>
     @font-face {
       font-family: 'Trade Gothic LT Pro';
@@ -204,25 +204,21 @@
     }
   </style>
 
-<script>
+  <script>
+    const idpButtons = document.getElementsByClassName('accountButton');
+    setTimeout(() => {
+      for (const btn of idpButtons) {
+        btn.addEventListener('click', () => {
+          sendWebAnalytics(btn.innerHTML)
+        })
+      }
+    }, 1000)
 
-  const idpButtons = document.getElementsByClassName('accountButton');
-  console.log(idpButtons.length)
-  console.log(idpButtons)
-  setTimeout(() => {
-    console.log(idpButtons.length)
-  }, 1000)
-  for(const btn of idpButtons) {
-    console.log(btn)
-  }
-  // if (document.getElementsByClassName('accountButton')) {
-  //   document.getElementsByClassName('accountButton').setAttribute('onclick','writeLED(1,1)')
-  //   const writeLED = () => {
-  //     console.log('new function')
-  //   }
-  // s
+    sendWebAnalytics = (btnClick) => {
+      console.log('IDP cicked:' + btnClick)
+    }
 
-</script>
+  </script>
 </head>
 
 <body>

@@ -11,6 +11,7 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
   <style>
+
     @font-face {
       font-family: 'Trade Gothic LT Pro';
       src: url('https://mattamydemo.azurewebsites.net/fonts/Trade-Gothic/TradeGothicLTPro.ttf');
@@ -179,7 +180,11 @@
       }
     }
   </style>
-
+  <style>
+    .hidden-details {
+        display: none;
+    }
+  </style>
   <style>
     #FacebookExchange {
       background-image: url(https://mattamydemo.azurewebsites.net/images/Facebook.png);
@@ -239,6 +244,16 @@
       </div>
     </div>
   </div>
+  <div>
+    Sorry, but we're having trouble signing you in.<br>
+    We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.<br>
+    Your administrator hasn't provided any contact details.
+</div>
+<div class="hidden-details">
+    Correlation ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx<br>
+    Timestamp: yyyy-mm-dd hh:mm:ssZ<br>
+    AADB2C: An exception has occurred
+</div>
   <footer class="row m-0 w-100 d-flex align-items-center">
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
       <span>&copy; 2023 Mattamy Homes. Prices are subject to change. E & OE.</span>
